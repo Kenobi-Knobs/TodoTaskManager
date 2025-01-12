@@ -1,8 +1,13 @@
-﻿namespace TaskManager.Server.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace TaskManager.Server.Models
 {
     public class Task
     {
-        public int Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         public required string Date { get; set; }
         public required string Description { get; set; }
     }
