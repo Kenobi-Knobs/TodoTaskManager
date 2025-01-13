@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Task } from '../models/task.model';
 import { environment } from '../../environments/environment';
 import { CreateTask } from '../models/create-task-dto.model';
+import { UpdateTask } from '../models/update-task-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class TaskService {
 
   deleteTask(taskId: string) : Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/tasks/${taskId}`);
+  }
+
+  updateTask(taskId: string, task: UpdateTask) : Observable<Task> {
+    return this.http.patch<Task>(`${environment.apiUrl}/tasks/${taskId}`, task);
   }
 }
