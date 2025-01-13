@@ -1,9 +1,6 @@
 <div class="app-container">
-    <header>
-      <h1>{{ title }}</h1>
-    </header>
-  
     <main>
-        <app-task-list></app-task-list>
+        <app-task-form (taskAdded)="taskList.onTaskAdded($event)"></app-task-form>
+        <app-task-list #taskList></app-task-list>
     </main>
 </div>

@@ -1,0 +1,6 @@
+<div class="task-form">
+    <form (ngSubmit)="onSubmit()">
+      <input id="taskDescription" class="add-input" [(ngModel)]="taskDescription" name="taskDescription" placeholder="Enter description" required />
+      <button class="add-button" type="submit" [disabled]="!taskDescription">Add</button>
+    </form>
+</div>
