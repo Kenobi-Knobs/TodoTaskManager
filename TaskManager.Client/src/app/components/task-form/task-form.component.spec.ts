@@ -11,61 +11,55 @@ describe('TaskFormComponent', () => {
   let fixture: ComponentFixture<TaskFormComponent>;
   let taskService: TaskService;
 
-  describe('TaskFormComponent', () => {
-    let component: TaskFormComponent;
-    let fixture: ComponentFixture<TaskFormComponent>;
-    let taskService: TaskService;
-
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        declarations: [TaskFormComponent],
-        providers: [
-          TaskService,
-          provideHttpClient(),
-          provideHttpClientTesting()
-        ]
-      });
-
-      fixture = TestBed.createComponent(TaskFormComponent);
-      component = fixture.componentInstance;
-      taskService = TestBed.inject(TaskService);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TaskFormComponent],
+      providers: [
+        TaskService,
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     });
 
-    it('should create the component', () => {
-      expect(component).toBeTruthy();
-    });
+    fixture = TestBed.createComponent(TaskFormComponent);
+    component = fixture.componentInstance;
+    taskService = TestBed.inject(TaskService);
+  });
 
-    it('should emit taskAdded event when a task is added successfully', () => {
-      const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' };
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  });
 
-      spyOn(component.taskAdded, 'emit');
+  it('should emit taskAdded event when a task is added successfully', () => {
+    const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' };
 
-      spyOn(taskService, 'addTask').and.returnValue(of(mockTask));
+    spyOn(component.taskAdded, 'emit');
 
-      component.taskDescription = 'New Task';
-      component.onSubmit();
+    spyOn(taskService, 'addTask').and.returnValue(of(mockTask));
 
-      expect(component.taskAdded.emit).toHaveBeenCalledWith(mockTask);
-    });
+    component.taskDescription = 'New Task';
+    component.onSubmit();
 
-    it('should not emit taskAdded event if task description is empty', () => {
-      spyOn(component.taskAdded, 'emit');
-      component.taskDescription = '';
-      component.onSubmit();
+    expect(component.taskAdded.emit).toHaveBeenCalledWith(mockTask);
+  });
 
-      expect(component.taskAdded.emit).not.toHaveBeenCalled();
-    });
+  it('should not emit taskAdded event if task description is empty', () => {
+    spyOn(component.taskAdded, 'emit');
+    component.taskDescription = '';
+    component.onSubmit();
 
-    it('should call addTask on taskService when task is submitted', () => {
-      const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' };
+    expect(component.taskAdded.emit).not.toHaveBeenCalled();
+  });
 
-      spyOn(component.taskAdded, 'emit');
-      spyOn(taskService, 'addTask').and.returnValue(of(mockTask));
+  it('should call addTask on taskService when task is submitted', () => {
+    const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' };
 
-      component.taskDescription = 'New Task';
-      component.onSubmit();
+    spyOn(component.taskAdded, 'emit');
+    spyOn(taskService, 'addTask').and.returnValue(of(mockTask));
 
-      expect(component.taskAdded.emit).toHaveBeenCalledWith(mockTask);
-    });
+    component.taskDescription = 'New Task';
+    component.onSubmit();
+
+    expect(component.taskAdded.emit).toHaveBeenCalledWith(mockTask);
   });
 });
