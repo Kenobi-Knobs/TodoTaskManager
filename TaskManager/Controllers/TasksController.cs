@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Server.Services;
+using TaskManager.Server.Models;
 using Task = TaskManager.Server.Models.Task;
 
 
@@ -38,6 +39,13 @@ namespace TaskManager.Controllers
         public async Task<ActionResult> DeleteTask(string id)
         {
             await _taskService.DeleteTaskAsync(id);
+            return Ok();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> UpdateTask(string id, UpdateTaskDto task)
+        {
+            await _taskService.UpdateTaskAsync(id, task);
             return Ok();
         }
     }

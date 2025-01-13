@@ -9,6 +9,7 @@ namespace TaskManager.Server.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         public System.DateTime? Date { get; set; }
+        public bool? IsPinned { get; set; } = false;
         public required string Description { get; set; }
     }
 }
