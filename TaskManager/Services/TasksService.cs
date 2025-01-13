@@ -19,6 +19,7 @@ namespace TaskManager.Server.Services
 
         public async Task CreateTaskAsync(TodoTask task)
         {
+            task.Date = DateTime.Now;
             await _mongoDBService.tasksCollection.InsertOneAsync(task);
         }
 

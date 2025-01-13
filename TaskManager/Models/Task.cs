@@ -8,7 +8,7 @@ namespace TaskManager.Server.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public required string Date { get; set; }
+        public System.DateTime? Date { get; set; }
         public required string Description { get; set; }
     }
 }
