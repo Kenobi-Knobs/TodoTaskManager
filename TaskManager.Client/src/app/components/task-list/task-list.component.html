@@ -1,7 +1,11 @@
 <div>
-  <ul>
-    <li *ngFor="let task of tasks">
-      <span>{{ task.date }} - {{ task.description }}</span>
+  <p *ngIf="tasks.length === 0" class="no-tasks-message">✅ No tasks</p>
+  <ul class="task-list">
+    <li *ngFor="let task of tasks" class="task-item">
+      <div class="task-content">
+        <input id="{{ task.id }}"class="task-checkbox" type="checkbox" (change)="onTaskDelete(task.id)"/>
+        <div class="task-description">{{ task.description }}</div>
+      </div>
     </li>
   </ul>
 </div>

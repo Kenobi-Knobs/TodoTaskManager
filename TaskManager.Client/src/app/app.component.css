@@ -1,11 +1,11 @@
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
 .app-container {
     font-family: Arial, sans-serif;
-  }
-  
-  header {
-    padding: 10px 0;
-  }
-  
-  main {
-    padding: 20px;
-  }
+}

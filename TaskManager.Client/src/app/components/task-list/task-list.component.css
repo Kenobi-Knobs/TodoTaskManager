@@ -1,0 +1,55 @@
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    background-color: #2f2f2f;
+    margin: 10px 0;
+    padding: 12px;
+    width: 500px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #3c3c3c;
+}
+
+.task-description {
+    font-size: 1rem;
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.no-tasks-message {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+}
+  
+.task-checkbox {
+    width: 1em;
+    height: 1em;
+    background-color: rgb(80, 80, 80);
+    border-radius: 50%;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.task-checkbox:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.task-content {
+  display: flex; 
+  align-items: center;
+  width: 100%;
+}

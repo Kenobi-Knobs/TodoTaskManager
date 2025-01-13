@@ -8,4 +8,4 @@ export class Task {
       this.date = date;
       this.description = description;
     }
-  }
+}
