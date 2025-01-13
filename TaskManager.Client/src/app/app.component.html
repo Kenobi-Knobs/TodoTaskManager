@@ -1,6 +1,10 @@
 <div class="app-container">
-    <main>
-        <app-task-form (taskAdded)="taskList.onTaskAdded($event)"></app-task-form>
-        <app-task-list #taskList></app-task-list>
-    </main>
+  <main>
+    <div class="date-container">
+      <div class="day">{{ day }}</div>
+      <div class="date">{{ date }}</div>
+    </div>
+    <app-task-form (taskAdded)="taskList.onTaskAdded($event)"></app-task-form>
+    <app-task-list #taskList></app-task-list>
+  </main>
 </div>
