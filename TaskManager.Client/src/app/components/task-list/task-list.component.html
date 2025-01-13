@@ -1,5 +1,8 @@
 <div>
-  <p *ngIf="tasks.length === 0" class="no-tasks-message">✅ No tasks</p>
+  <p *ngIf="tasks.length === 0" class="no-tasks-message">
+    <i class="material-icons no-tasks-icon">library_add_check</i>
+    Please add a task to get started.
+  </p>
   <ul class="task-list">
     <li *ngFor="let task of tasks" class="task-item">
       <div class="task-content">
