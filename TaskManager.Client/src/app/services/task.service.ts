@@ -13,4 +13,8 @@ export class TaskService {
   getTasks() : Observable<Task[]> {
     return this.http.get<Task[]>(`${environment.apiUrl}/tasks`);
   }
+
+  deleteTask(taskId: string) : Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/tasks/${taskId}`);
+  }
 }

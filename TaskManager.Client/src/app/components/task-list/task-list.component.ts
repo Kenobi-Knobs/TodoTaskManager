@@ -18,4 +18,10 @@ export class TaskListComponent implements OnInit {
       this.tasks = data;
     });
   }
+
+  onTaskDelete(taskId: string) {
+    this.taskService.deleteTask(taskId).subscribe(() => {
+      this.tasks = this.tasks.filter(task => task.id !== taskId);
+    });
+  }
 }
