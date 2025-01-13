@@ -1,6 +1,7 @@
 ﻿using Moq;
 using TaskManager.Controllers;
 using TodoTask = TaskManager.Server.Models.Task;
+using UpdateTaskDto = TaskManager.Server.Models.UpdateTaskDto;
 using TaskManager.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -72,6 +73,20 @@ namespace TaskManager.Server.Test.Controllers
                             .Returns(Task.CompletedTask);
             // Act
             var result = await _controller.DeleteTask(taskId);
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
+
+        [Fact]
+        public async Task UpdateTask_ReturnsOk()
+        {
+            // Arrange
+            var taskId = "1";
+            var updateTask = new UpdateTaskDto { Description = "Updated Task" };
+            _mockTasksService.Setup(service => service.UpdateTaskAsync(taskId, updateTask))
+                            .Returns(Task.CompletedTask);
+            // Act
+            var result = await _controller.UpdateTask(taskId, updateTask);
             // Assert
             Assert.IsType<OkResult>(result);
         }
