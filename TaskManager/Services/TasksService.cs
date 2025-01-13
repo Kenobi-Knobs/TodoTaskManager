@@ -3,7 +3,7 @@ using TodoTask = TaskManager.Server.Models.Task;
 
 namespace TaskManager.Server.Services
 {
-    public class TasksService
+    public class TasksService : ITasksService
     {
         private readonly MongoDBService _mongoDBService;
 

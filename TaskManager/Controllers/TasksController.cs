@@ -9,9 +9,9 @@ namespace TaskManager.Controllers
     [Route("api/[controller]")]
     public class TasksController : ControllerBase
     {
-        private readonly TasksService _taskService;
+        private readonly ITasksService _taskService;
 
-        public TasksController(TasksService tasksService)
+        public TasksController(ITasksService tasksService)
         {
             _taskService = tasksService;
         }

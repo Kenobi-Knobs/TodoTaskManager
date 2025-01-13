@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoDBService>();
-builder.Services.AddSingleton<TasksService>();
+builder.Services.AddSingleton<ITasksService, TasksService>();
 
 builder.Services.AddControllers();
 
