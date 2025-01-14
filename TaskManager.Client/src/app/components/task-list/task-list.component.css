@@ -49,8 +49,25 @@
   background-color: #616974;
 }
 
-.task-content {
+.task-container {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   width: 100%;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  border-bottom: 1px solid #2a2f33;
+  margin: 5px;
+}
+
+.keep-icon {
+  font-size: 0.9rem;
+  margin-top: 2px;
+  cursor: pointer;
 }
