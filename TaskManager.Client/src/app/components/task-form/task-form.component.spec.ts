@@ -31,7 +31,7 @@ describe('TaskFormComponent', () => {
   });
 
   it('should emit taskAdded event when a task is added successfully', () => {
-    const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' };
+    const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task', isPinned: false };
 
     spyOn(component.taskAdded, 'emit');
 
@@ -52,7 +52,7 @@ describe('TaskFormComponent', () => {
   });
 
   it('should call addTask on taskService when task is submitted', () => {
-    const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' };
+    const mockTask: Task = { id: '1', date: '2021-01-01', description: 'New Task' , isPinned: false};
 
     spyOn(component.taskAdded, 'emit');
     spyOn(taskService, 'addTask').and.returnValue(of(mockTask));

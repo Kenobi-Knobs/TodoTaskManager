@@ -34,8 +34,8 @@ describe('TaskService', () => {
   describe('getTasks', () => {
     it('should a GET request and return task list', () => {
       const mockTasks: Task[] = [
-        { id: '1', date: '2025-01-01', description: 'Task 1' },
-        { id: '2', date: '2025-01-02', description: 'Task 2' }
+        { id: '1', date: '2025-01-01', description: 'Task 1', isPinned: false },
+        { id: '2', date: '2025-01-02', description: 'Task 2', isPinned: true }
       ];
 
       service.getTasks().subscribe((tasks) => {
@@ -52,7 +52,7 @@ describe('TaskService', () => {
   describe('addTask', () => {
     it('should send a POST request and return the added task', () => {
       const newTask: CreateTask = { description: 'New Task' };
-      const mockTask: Task = { id: '3', date: '2025-01-03', description: 'New Task' };
+      const mockTask: Task = { id: '3', date: '2025-01-03', description: 'New Task', isPinned: false };
 
       service.addTask(newTask).subscribe((task) => {
         expect(task).toEqual(mockTask);
@@ -74,6 +74,23 @@ describe('TaskService', () => {
       const req = httpTestingController.expectOne(`${environment.apiUrl}/tasks/${taskId}`);
       expect(req.request.method).toBe('DELETE');
       req.flush(null);
+    });
+  });
+
+  describe('updateTask', () => {
+    it('should send a PATCH request and return the updated task', () => {
+      const taskId = '1';
+      const updateTask = { description: 'Updated Task' , isPinned: false };
+      const mockTask: Task = { id: '1', date: '2025-01-01', description: 'Updated Task', isPinned: false };
+
+      service.updateTask(taskId, updateTask).subscribe((task) => {
+        expect(task).toEqual(mockTask);
+      });
+
+      const req = httpTestingController.expectOne(`${environment.apiUrl}/tasks/${taskId}`);
+      expect(req.request.method).toBe('PATCH');
+      expect(req.request.body).toEqual(updateTask);
+      req.flush(mockTask);
     });
   });
 });
