@@ -14,6 +14,9 @@ Task Manager is a web application for task management, allowing users to add, vi
 3. **Delete Tasks**:
    - Users can delete tasks using a checkbox.
 
+4. **Pin/Unpin Tasks**
+   - Users can pin tasks.
+
 ## Technologies
 
 - **Frontend**:
